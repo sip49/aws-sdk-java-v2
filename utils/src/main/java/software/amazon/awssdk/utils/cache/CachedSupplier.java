@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.utils.cache;
 
+import java.security.SecureRandom;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
 import java.time.Clock;
@@ -106,7 +107,7 @@ public class CachedSupplier<T> implements Supplier<T>, SdkAutoCloseable {
     /**
      * Random instance used for jittering refresh results.
      */
-    private final Random jitterRandom = new Random();
+    private final Random jitterRandom = new SecureRandom();
 
     private CachedSupplier(Builder<T> builder) {
         Validate.notNull(builder.supplier, "builder.supplier");

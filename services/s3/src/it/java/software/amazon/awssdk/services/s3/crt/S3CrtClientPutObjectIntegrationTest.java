@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.services.s3.crt;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static software.amazon.awssdk.testutils.service.S3BucketUtils.temporaryBucketName;
 
@@ -112,7 +113,7 @@ public class S3CrtClientPutObjectIntegrationTest extends S3IntegrationTestBase {
     @Test
     void putObject_byteBufferBody_objectSentCorrectly() {
         byte[] data = new byte[16384];
-        new Random().nextBytes(data);
+        new SecureRandom().nextBytes(data);
         ByteBuffer byteBuffer = ByteBuffer.wrap(data);
 
         AsyncRequestBody body = AsyncRequestBody.fromByteBuffer(byteBuffer);
@@ -129,7 +130,7 @@ public class S3CrtClientPutObjectIntegrationTest extends S3IntegrationTestBase {
 
     @Test
     void putObject_customRequestBody_objectSentCorrectly() throws IOException {
-        Random rng = new Random();
+        Random rng = new SecureRandom();
         int bufferSize = 16384;
         int nBuffers = 15;
         List<ByteBuffer> bodyData = Stream.generate(() -> {
