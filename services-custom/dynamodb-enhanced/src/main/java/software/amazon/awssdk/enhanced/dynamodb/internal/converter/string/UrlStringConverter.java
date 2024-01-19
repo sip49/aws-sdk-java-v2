@@ -15,6 +15,8 @@
 
 package software.amazon.awssdk.enhanced.dynamodb.internal.converter.string;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.net.MalformedURLException;
 import java.net.URL;
 import software.amazon.awssdk.annotations.Immutable;
@@ -45,7 +47,7 @@ public class UrlStringConverter implements StringConverter<URL> {
     @Override
     public URL fromString(String string) {
         try {
-            return new URL(string);
+            return Urls.create(string, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("URL format was incorrect: " + string, e);
         }

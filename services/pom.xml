@@ -389,6 +389,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>io.github.pixee</groupId>
+                <artifactId>java-security-toolkit</artifactId>
+                <version>${versions.java-security-toolkit}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -596,4 +601,7 @@
             </build>
         </profile>
     </profiles>
+    <properties>
+        <versions.java-security-toolkit>1.1.1</versions.java-security-toolkit>
+    </properties>
 </project>

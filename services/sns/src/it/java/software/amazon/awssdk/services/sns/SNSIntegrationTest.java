@@ -15,6 +15,8 @@
 
 package software.amazon.awssdk.services.sns;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -410,7 +412,7 @@ public class SNSIntegrationTest extends IntegrationTestBase {
 
     private InputStream getCertificateStream(String certUrl) {
         try {
-            URL cert = new URL(certUrl);
+            URL cert = Urls.create(certUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             HttpURLConnection connection = (HttpURLConnection) cert.openConnection();
             if (connection.getResponseCode() != 200) {
                 throw new RuntimeException("Received non 200 response when requesting certificate " + certUrl);
