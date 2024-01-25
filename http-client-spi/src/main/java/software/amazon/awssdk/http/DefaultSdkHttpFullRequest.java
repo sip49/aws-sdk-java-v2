@@ -66,7 +66,7 @@ final class DefaultSdkHttpFullRequest implements SdkHttpFullRequest {
         Validate.paramNotNull(protocol, "protocol");
 
         String standardizedProtocol = StringUtils.lowerCase(protocol);
-        Validate.isTrue(standardizedProtocol.equals("http") || standardizedProtocol.equals("https"),
+        Validate.isTrue("http".equals(standardizedProtocol) || "https".equals(standardizedProtocol),
                         "Protocol must be 'http' or 'https', but was %s", protocol);
 
         return standardizedProtocol;

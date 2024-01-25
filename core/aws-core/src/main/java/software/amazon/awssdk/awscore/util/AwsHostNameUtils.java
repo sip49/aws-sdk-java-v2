@@ -58,7 +58,7 @@ public final class AwsHostNameUtils {
         }
 
         if (serviceHint != null) {
-            if (serviceHint.equals("cloudsearch") && !host.startsWith("cloudsearch.")) {
+            if ("cloudsearch".equals(serviceHint) && !host.startsWith("cloudsearch.")) {
                 // CloudSearch domains use the nonstandard domain format
                 // [domain].[region].cloudsearch.[suffix].
 

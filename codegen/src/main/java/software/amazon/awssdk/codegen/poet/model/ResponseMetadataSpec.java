@@ -97,7 +97,7 @@ public class ResponseMetadataSpec implements ClassSpec {
                                                                               .addModifiers(Modifier.PUBLIC)
                                                                               .addStatement("return getValue($L)", key)
                                                                               .returns(String.class);
-                                 if (methodName.equals("requestId")) {
+                                 if ("requestId".equals(methodName)) {
                                      methodBuilder.addAnnotation(Override.class);
                                  }
                                  return methodBuilder.build();

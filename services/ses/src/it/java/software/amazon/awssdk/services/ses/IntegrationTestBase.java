@@ -48,7 +48,7 @@ public abstract class IntegrationTestBase extends AwsTestBase {
         setUpCredentials();
 
         if (DESTINATION == null) {
-            DESTINATION = System.getProperty("user.name").equals("webuser") ? HUDSON_EMAIL_LIST :
+            DESTINATION = "webuser".equals(System.getProperty("user.name")) ? HUDSON_EMAIL_LIST :
                     System.getProperty("user.name") + "@amazon.com";
             SOURCE = DESTINATION;
         }

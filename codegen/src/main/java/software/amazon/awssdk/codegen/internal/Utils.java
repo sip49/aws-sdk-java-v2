@@ -52,15 +52,15 @@ public final class Utils {
     }
 
     public static boolean isStructure(Shape shape) {
-        return shape.getType().equals("structure");
+        return "structure".equals(shape.getType());
     }
 
     public static boolean isListShape(Shape shape) {
-        return shape.getType().equals("list");
+        return "list".equals(shape.getType());
     }
 
     public static boolean isMapShape(Shape shape) {
-        return shape.getType().equals("map");
+        return "map".equals(shape.getType());
     }
 
     public static boolean isEnumShape(Shape shape) {

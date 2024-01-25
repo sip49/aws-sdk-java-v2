@@ -272,23 +272,23 @@ public final class SdkHttpUtils {
      */
     public static boolean isUsingStandardPort(String protocol, Integer port) {
         Validate.paramNotNull(protocol, "protocol");
-        Validate.isTrue(protocol.equals("http") || protocol.equals("https"),
+        Validate.isTrue("http".equals(protocol) || "https".equals(protocol),
                         "Protocol must be 'http' or 'https', but was '%s'.", protocol);
 
         String scheme = StringUtils.lowerCase(protocol);
 
         return port == null || port == -1 ||
-               (scheme.equals("http") && port == 80) ||
-               (scheme.equals("https") && port == 443);
+               ("http".equals(scheme) && port == 80) ||
+               ("https".equals(scheme) && port == 443);
     }
 
     /**
      * Retrieve the standard port for the provided protocol.
      */
     public static int standardPort(String protocol) {
-        if (protocol.equalsIgnoreCase("http")) {
+        if ("http".equalsIgnoreCase(protocol)) {
             return 80;
-        } else if (protocol.equalsIgnoreCase("https")) {
+        } else if ("https".equalsIgnoreCase(protocol)) {
             return 443;
         } else {
             throw new IllegalArgumentException("Unknown protocol: " + protocol);

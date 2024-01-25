@@ -124,7 +124,7 @@ public final class DefaultAwsCrtS3V4aSigner implements AwsCrtS3V4aSigner {
     }
 
     private boolean shouldSignPayload(SdkHttpFullRequest request, ExecutionAttributes executionAttributes) {
-        if (!request.protocol().equals("https") && request.contentStreamProvider().isPresent()) {
+        if (!"https".equals(request.protocol()) && request.contentStreamProvider().isPresent()) {
             return true;
         }
         boolean payloadSigning =

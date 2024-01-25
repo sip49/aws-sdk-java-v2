@@ -263,8 +263,8 @@ public final class AwaitCloseChannelPoolMap extends SdkChannelPoolMap<URI, Simpl
 
     private boolean needSslContext(URI targetAddress) {
         URI proxyAddress = proxyAddress(targetAddress);
-        boolean needContext = targetAddress.getScheme().equalsIgnoreCase("https")
-                              || proxyAddress != null && proxyAddress.getScheme().equalsIgnoreCase("https");
+        boolean needContext = "https".equalsIgnoreCase(targetAddress.getScheme())
+                              || proxyAddress != null && "https".equalsIgnoreCase(proxyAddress.getScheme());
 
         return needContext;
     }

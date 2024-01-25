@@ -175,7 +175,7 @@ public final class ReflectionUtils {
 
         String field = trimType(path.get(depth));
 
-        if (field.equals("*")) {
+        if ("*".equals(field)) {
 
             if (!(target instanceof Iterable)) {
                 throw new IllegalStateException(
@@ -317,7 +317,7 @@ public final class ReflectionUtils {
         String offset = field.substring(0, index);
         String type = field.substring(index + 1);
 
-        if (offset.equals("*")) {
+        if ("*".equals(offset)) {
             throw new UnsupportedOperationException(
                     "What does this even mean?");
         }

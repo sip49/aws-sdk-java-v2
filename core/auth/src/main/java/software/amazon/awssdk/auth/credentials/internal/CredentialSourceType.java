@@ -24,11 +24,11 @@ public enum CredentialSourceType {
     ENVIRONMENT;
 
     public static CredentialSourceType parse(String value) {
-        if (value.equalsIgnoreCase("Ec2InstanceMetadata")) {
+        if ("Ec2InstanceMetadata".equalsIgnoreCase(value)) {
             return EC2_INSTANCE_METADATA;
-        } else if (value.equalsIgnoreCase("EcsContainer")) {
+        } else if ("EcsContainer".equalsIgnoreCase(value)) {
             return ECS_CONTAINER;
-        } else if (value.equalsIgnoreCase("Environment")) {
+        } else if ("Environment".equalsIgnoreCase(value)) {
             return ENVIRONMENT;
         }
 

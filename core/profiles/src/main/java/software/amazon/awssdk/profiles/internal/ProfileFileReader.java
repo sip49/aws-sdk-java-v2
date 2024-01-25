@@ -138,7 +138,7 @@ public final class ProfileFileReader {
 
         state.currentPropertyBeingRead = property.left();
         state.ignoringCurrentProperty = false;
-        state.validatingContinuationsAsSubProperties = property.right().equals("");
+        state.validatingContinuationsAsSubProperties = "".equals(property.right());
 
         state.profiles.get(state.sectionReadInProgress)
                       .get(state.currentProfileBeingRead).put(property.left(), property.right());
@@ -189,7 +189,7 @@ public final class ProfileFileReader {
         if (state.fileType == ProfileFile.Type.CONFIGURATION) {
             if (hasProfilePrefix) {
                 standardizedProfileName = StringUtils.trim(rawProfileName.substring(ProfileFile.PROFILES_SECTION_TITLE.length()));
-            } else if (rawProfileName.equals("default")) {
+            } else if ("default".equals(rawProfileName)) {
                 standardizedProfileName = "default";
             } else {
                 log.warn(() -> "Ignoring profile '" + rawProfileName + "' on line " + state.currentLineNumber + " because it " +
@@ -212,7 +212,7 @@ public final class ProfileFileReader {
         }
 
         // [profile default] must take priority over [default] in configuration files.
-        boolean isDefaultProfile = profileName.equals("default");
+        boolean isDefaultProfile = "default".equals(profileName);
         boolean seenProfileBefore = state.profiles.get(ProfileFile.PROFILES_SECTION_TITLE).containsKey(profileName);
 
         if (state.fileType == ProfileFile.Type.CONFIGURATION && isDefaultProfile && seenProfileBefore) {
@@ -348,7 +348,7 @@ public final class ProfileFileReader {
 
         String profilePrefix =
             Arrays.stream(ProfileSection.values())
-                  .filter(x -> !x.getSectionTitle().equals(ProfileFile.PROFILES_SECTION_TITLE))
+                  .filter(x -> !ProfileFile.PROFILES_SECTION_TITLE.equals(x.getSectionTitle()))
                   .map(x -> x.getSectionTitle())
                   .filter(
                       title -> rawProfileName.startsWith(String.format("%s ", title))

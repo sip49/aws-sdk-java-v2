@@ -45,7 +45,7 @@ public class RequestCompressionTrait {
         // TODO : remove once:
         //  1) S3 checksum interceptors are moved to occur after CompressRequestStage
         //  2) Transfer-Encoding:chunked is supported in S3
-        if (model.getMetadata().getServiceName().equals("S3")) {
+        if ("S3".equals(model.getMetadata().getServiceName())) {
             throw new IllegalStateException("Request compression for S3 is not yet supported in the AWS SDK for Java.");
         }
 

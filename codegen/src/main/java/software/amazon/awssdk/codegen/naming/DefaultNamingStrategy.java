@@ -388,7 +388,7 @@ public class DefaultNamingStrategy implements NamingStrategy {
 
     private boolean isDisallowedNameForShape(String name, Shape parentShape) {
         // Reserve the name "type" for union shapes.
-        if (parentShape.isUnion() && name.equals("type")) {
+        if (parentShape.isUnion() && "type".equals(name)) {
             return true;
         }
 

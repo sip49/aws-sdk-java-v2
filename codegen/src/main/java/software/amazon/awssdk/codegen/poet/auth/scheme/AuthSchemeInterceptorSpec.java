@@ -170,7 +170,7 @@ public final class AuthSchemeInterceptorSpec implements ClassSpec {
             if (!authSchemeSpecUtils.includeParamForProvider(paramName)) {
                 continue;
             }
-            regionIncluded = regionIncluded || paramName.equalsIgnoreCase("region");
+            regionIncluded = regionIncluded || "region".equalsIgnoreCase(paramName);
             String methodName = endpointRulesSpecUtils.paramMethodName(paramName);
             builder.addStatement("builder.$1N(endpointParams.$1N())", methodName);
         }

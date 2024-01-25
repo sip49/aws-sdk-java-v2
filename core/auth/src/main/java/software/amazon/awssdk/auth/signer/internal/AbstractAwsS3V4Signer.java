@@ -280,7 +280,7 @@ public abstract class AbstractAwsS3V4Signer extends AbstractAws4Signer<AwsS3V4Si
         /**
          * If we aren't using https we should always sign the payload unless there is no payload
          */
-        if (!request.protocol().equals("https") && request.contentStreamProvider() != null) {
+        if (!"https".equals(request.protocol()) && request.contentStreamProvider() != null) {
             return true;
         }
 

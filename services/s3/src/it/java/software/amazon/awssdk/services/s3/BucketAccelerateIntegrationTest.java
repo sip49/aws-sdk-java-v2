@@ -92,7 +92,7 @@ public class BucketAccelerateIntegrationTest extends S3IntegrationTestBase {
                                                                                                    .build())
                           .statusAsString();
 
-        if (status == null || !status.equals("Enabled")) {
+        if (status == null || !"Enabled".equals(status)) {
             enableAccelerateOnBucket();
         }
 
@@ -119,7 +119,7 @@ public class BucketAccelerateIntegrationTest extends S3IntegrationTestBase {
                                                                                                    .build())
                           .statusAsString();
 
-        if (status == null || !status.equals("Enabled")) {
+        if (status == null || !"Enabled".equals(status)) {
             enableAccelerateOnBucket();
         }
 

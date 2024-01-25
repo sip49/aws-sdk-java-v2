@@ -94,16 +94,16 @@ public class SignatureChecker {
     public boolean verifySignature(Map<String, String> parsedMessage, PublicKey publicKey) {
         boolean valid = false;
         String version = parsedMessage.get(SIGNATURE_VERSION);
-        if (version.equals("1")) {
+        if ("1".equals(version)) {
             // construct the canonical signed string
             String type = parsedMessage.get(TYPE);
             String signature = parsedMessage.get(SIGNATURE);
             String signed = "";
-            if (type.equals(NOTIFICATION_TYPE)) {
+            if (NOTIFICATION_TYPE.equals(type)) {
                 signed = stringToSign(publishMessageValues(parsedMessage));
-            } else if (type.equals(SUBSCRIBE_TYPE)) {
+            } else if (SUBSCRIBE_TYPE.equals(type)) {
                 signed = stringToSign(subscribeMessageValues(parsedMessage));
-            } else if (type.equals(UNSUBSCRIBE_TYPE)) {
+            } else if (UNSUBSCRIBE_TYPE.equals(type)) {
                 signed = stringToSign(subscribeMessageValues(parsedMessage)); // no difference, for now
             } else {
                 throw new RuntimeException("Cannot process message of type " + type);

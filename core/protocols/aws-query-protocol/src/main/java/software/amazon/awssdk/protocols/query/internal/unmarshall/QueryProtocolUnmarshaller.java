@@ -122,7 +122,7 @@ public final class QueryProtocolUnmarshaller implements XmlErrorUnmarshaller {
     }
 
     private String metadataKeyName(XmlElement c) {
-        return c.elementName().equals("RequestId") ? AWS_REQUEST_ID : c.elementName();
+        return "RequestId".equals(c.elementName()) ? AWS_REQUEST_ID : c.elementName();
     }
 
     private SdkPojo unmarshall(QueryUnmarshallerContext context, SdkPojo sdkPojo, XmlElement root) {

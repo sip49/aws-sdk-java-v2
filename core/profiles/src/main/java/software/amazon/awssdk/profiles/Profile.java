@@ -94,9 +94,9 @@ public final class Profile implements ToCopyableBuilder<Profile.Builder, Profile
     }
 
     private Boolean parseBooleanProperty(String propertyKey, String property) {
-        if (property.equalsIgnoreCase("true")) {
+        if ("true".equalsIgnoreCase(property)) {
             return true;
-        } else if (property.equalsIgnoreCase("false")) {
+        } else if ("false".equalsIgnoreCase(property)) {
             return false;
         }
 

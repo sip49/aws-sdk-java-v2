@@ -183,7 +183,7 @@ public class ShapeModelReflector {
 
         String simpleType = memberModel.getVariable().getSimpleType();
 
-        if (simpleType.equals("Document")) {
+        if ("Document".equals(simpleType)) {
             return new JsonNodeToDocumentConvertor().visit(currentNode);
         }
         // Streaming members are not in the POJO, for Document type null Json Nodes are represented as NullDocument

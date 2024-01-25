@@ -115,7 +115,7 @@ public final class ClasspathInterceptorChainFactory {
         }
 
         interceptorClassName = interceptorClassName.trim();
-        if (interceptorClassName.equals("")) {
+        if ("".equals(interceptorClassName)) {
             return null;
         }
 

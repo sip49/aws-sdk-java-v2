@@ -243,11 +243,11 @@ public class JsonPolicyReader {
      * @return a principal instance.
      */
     private Principal createPrincipal(String schema, JsonNode principalNode) {
-        if (schema.equalsIgnoreCase(PRINCIPAL_SCHEMA_USER)) {
+        if (PRINCIPAL_SCHEMA_USER.equalsIgnoreCase(schema)) {
             return new Principal(principalNode.asText());
-        } else if (schema.equalsIgnoreCase(PRINCIPAL_SCHEMA_SERVICE)) {
+        } else if (PRINCIPAL_SCHEMA_SERVICE.equalsIgnoreCase(schema)) {
             return new Principal(schema, principalNode.asText());
-        } else if (schema.equalsIgnoreCase(PRINCIPAL_SCHEMA_FEDERATED)) {
+        } else if (PRINCIPAL_SCHEMA_FEDERATED.equalsIgnoreCase(schema)) {
             if (Principal.WebIdentityProvider.fromString(principalNode.asText()) != null) {
                 return new Principal(
                         Principal.WebIdentityProvider.fromString(principalNode.asText()));

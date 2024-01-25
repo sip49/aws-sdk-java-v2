@@ -96,7 +96,7 @@ public class Principal {
      * the provider is "AWS".
      */
     public Principal(String provider, String id) {
-        this(provider, id, provider.equals("AWS"));
+        this(provider, id, "AWS".equals(provider));
     }
 
     /**

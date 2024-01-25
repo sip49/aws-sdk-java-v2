@@ -153,7 +153,7 @@ public final class ProcessCredentialsProvider
         }
 
         JsonNode version = credentialsJson.field("Version").orElse(null);
-        if (version == null || !version.isNumber() || !version.asNumber().equals("1")) {
+        if (version == null || !version.isNumber() || !"1".equals(version.asNumber())) {
             throw new IllegalStateException("Unsupported credential version: " + version);
         }
         return credentialsJson;
