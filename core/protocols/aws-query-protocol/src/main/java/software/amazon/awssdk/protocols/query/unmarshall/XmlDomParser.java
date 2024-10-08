@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.protocols.query.unmarshall;
 
+import static io.github.pixee.security.XMLInputFactorySecurity.hardenFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -128,7 +129,7 @@ public final class XmlDomParser {
      * See <a href="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet">OWASP XXE Cheat Sheet</a>
      */
     private static XMLInputFactory createXmlInputFactory() {
-        XMLInputFactory factory = XMLInputFactory.newInstance();
+        XMLInputFactory factory = hardenFactory(XMLInputFactory.newInstance());
         factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
         factory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
         return factory;
