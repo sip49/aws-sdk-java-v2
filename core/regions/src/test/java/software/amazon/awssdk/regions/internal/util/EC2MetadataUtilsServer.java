@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.regions.internal.util;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -81,7 +82,7 @@ public class EC2MetadataUtilsServer {
     private void handleConnection(BufferedReader input,
                                   PrintWriter output) throws IOException {
 
-        String line = input.readLine();
+        String line = BoundedLineReader.readLine(input, 5_000_000);
         if (line == null) {
             return;
         }
@@ -122,7 +123,7 @@ public class EC2MetadataUtilsServer {
     private void ignoreRequest(BufferedReader input) throws IOException {
 
         while (true) {
-            String line = input.readLine();
+            String line = BoundedLineReader.readLine(input, 5_000_000);
             if (line == null) {
                 throw new RuntimeException("Unexpected end of input");
             }

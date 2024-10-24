@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.services.sqs;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -79,6 +80,6 @@ public class SqsConcurrentPerformanceIntegrationTest extends IntegrationTestBase
     }
 
     private void waitForUserInput() throws IOException {
-        new BufferedReader(new InputStreamReader(System.in)).readLine();
+        BoundedLineReader.readLine(new BufferedReader(new InputStreamReader(System.in)), 5_000_000);
     }
 }
