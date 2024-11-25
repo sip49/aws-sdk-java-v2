@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.enhanced.dynamodb.functionaltests.models;
 
+import java.security.SecureRandom;
 import static software.amazon.awssdk.enhanced.dynamodb.mapper.StaticAttributeTags.primaryPartitionKey;
 import static software.amazon.awssdk.enhanced.dynamodb.mapper.StaticAttributeTags.primarySortKey;
 
@@ -23,7 +24,7 @@ import java.util.UUID;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.StaticTableSchema;
 
 public class FakeItemWithNumericSort {
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
 
     private static final StaticTableSchema<FakeItemWithNumericSort> FAKE_ITEM_MAPPER =
         StaticTableSchema.builder(FakeItemWithNumericSort.class)

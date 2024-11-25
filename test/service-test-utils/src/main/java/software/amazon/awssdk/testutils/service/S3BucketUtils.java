@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.testutils.service;
 
+import java.security.SecureRandom;
 import static software.amazon.awssdk.utils.JavaSystemSetting.USER_NAME;
 import static software.amazon.awssdk.utils.StringUtils.lowerCase;
 
@@ -23,7 +24,7 @@ import software.amazon.awssdk.utils.Logger;
 
 public final class S3BucketUtils {
     private static final Logger logger = Logger.loggerFor(S3BucketUtils.class);
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
     private static final int MAX_BUCKET_NAME_LENGTH = 63;
 
     private S3BucketUtils() {

@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.auth.signer.internal;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
@@ -57,7 +58,7 @@ public class BaseEventStreamAsyncAws4SignerTest {
     @Test
     public void toDebugString_largePayload_truncate_generatesCorrectString() {
         byte[] payload = new byte[128];
-        new Random().nextBytes(payload);
+        new SecureRandom().nextBytes(payload);
         Message m = new Message(headers, payload);
 
         byte[] first32 = Arrays.copyOf(payload, 32);
@@ -69,7 +70,7 @@ public class BaseEventStreamAsyncAws4SignerTest {
     @Test
     public void toDebugString_largePayload_noTruncate_generatesCorrectString() {
         byte[] payload = new byte[128];
-        new Random().nextBytes(payload);
+        new SecureRandom().nextBytes(payload);
         Message m = new Message(headers, payload);
 
         String expectedPayloadString = BinaryUtils.toHex(payload);
@@ -80,7 +81,7 @@ public class BaseEventStreamAsyncAws4SignerTest {
     @Test
     public void toDebugString_smallPayload_truncate_doesNotAddEllipsis() {
         byte[] payload = new byte[8];
-        new Random().nextBytes(payload);
+        new SecureRandom().nextBytes(payload);
         Message m = new Message(headers, payload);
 
         String expectedPayloadString = BinaryUtils.toHex(payload);

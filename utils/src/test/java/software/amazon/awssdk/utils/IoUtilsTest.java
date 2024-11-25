@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.utils;
 
+import java.security.SecureRandom;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayInputStream;
@@ -26,7 +27,7 @@ import org.junit.jupiter.api.Test;
 
 public class IoUtilsTest {
 
-    private final Random random = new Random();
+    private final Random random = new SecureRandom();
 
     @Test
     public void testEmptyByteArray() throws Exception {

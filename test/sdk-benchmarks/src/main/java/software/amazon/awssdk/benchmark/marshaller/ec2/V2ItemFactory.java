@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.benchmark.marshaller.ec2;
 
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ import software.amazon.awssdk.services.ec2.model.VolumeType;
 final class V2ItemFactory {
     private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
 
-    private static final Random RNG = new Random();
+    private static final Random RNG = new SecureRandom();
 
     RunInstancesRequest tiny() {
         return RunInstancesRequest.builder()

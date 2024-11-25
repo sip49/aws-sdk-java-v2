@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.services.s3.crt;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static software.amazon.awssdk.services.s3.multipart.S3ClientMultiPartCopyIntegrationTest.randomBytes;
@@ -125,7 +126,7 @@ public class S3CrossRegionCrtIntegrationTest extends S3IntegrationTestBase {
     @Test
     void putObject_byteBufferBody_objectSentCorrectly() {
         byte[] data = new byte[16384];
-        new Random().nextBytes(data);
+        new SecureRandom().nextBytes(data);
         ByteBuffer byteBuffer = ByteBuffer.wrap(data);
 
         AsyncRequestBody body = AsyncRequestBody.fromByteBuffer(byteBuffer);

@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.core.internal.io;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -77,7 +78,7 @@ public class AwsCompressionInputStreamTest {
 
     private byte[] generateRandomBody(int size) {
         byte[] randomData = new byte[size];
-        new Random().nextBytes(randomData);
+        new SecureRandom().nextBytes(randomData);
         return randomData;
     }
 

@@ -18,6 +18,7 @@ package software.amazon.awssdk.benchmark.enhanced.dynamodb;
 import com.amazonaws.util.ImmutableMapParameter;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,7 @@ import software.amazon.awssdk.core.SdkBytes;
 abstract class ItemFactory<T> {
     private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
 
-    private static final Random RNG = new Random();
+    private static final Random RNG = new SecureRandom();
 
     public final Map<String, T> tiny() {
         return asItem(tinyBean());
