@@ -16,6 +16,7 @@
 package software.amazon.awssdk.protocol.tests.timeout;
 
 
+import java.nio.file.Files;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.io.File;
@@ -109,7 +110,7 @@ public abstract class BaseTimeoutTest {
 
         public SlowFileResponseTransformer() {
             try {
-                this.delegate = ResponseTransformer.toFile(File.createTempFile("ApiCallTiemoutTest", ".txt"));
+                this.delegate = ResponseTransformer.toFile(Files.createTempFile("ApiCallTiemoutTest", ".txt").toFile());
             } catch (IOException e) {
                 e.printStackTrace();
             }

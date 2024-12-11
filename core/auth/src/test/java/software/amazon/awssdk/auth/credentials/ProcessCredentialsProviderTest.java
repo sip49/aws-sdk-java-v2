@@ -14,6 +14,7 @@
  */
 package software.amazon.awssdk.auth.credentials;
 
+import java.nio.file.Files;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertNotNull;
@@ -218,7 +219,7 @@ public class ProcessCredentialsProviderTest {
         try {
             scriptInputStream = ProcessCredentialsProviderTest.class.getResourceAsStream(scriptClasspathLocation);
 
-            File scriptFileOnDisk = File.createTempFile("ProcessCredentialsProviderTest", scriptClasspathFilename);
+            File scriptFileOnDisk = Files.createTempFile("ProcessCredentialsProviderTest", scriptClasspathFilename).toFile();
             scriptFileOnDisk.deleteOnExit();
 
             if (!scriptFileOnDisk.setExecutable(true)) {

@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Random;
 import org.apache.commons.io.IOUtils;
 
@@ -66,7 +67,7 @@ public class FileUtils {
 
     public static File generateRandomAsciiFile(long byteSize,
                                                boolean deleteOnExit) throws IOException {
-        File file = File.createTempFile("CryptoTestUtils", ".txt");
+        File file = Files.createTempFile("CryptoTestUtils", ".txt").toFile();
         System.out.println("Generating random ASCII file with size: "
                            + byteSize + " at " + file);
         if (deleteOnExit) {

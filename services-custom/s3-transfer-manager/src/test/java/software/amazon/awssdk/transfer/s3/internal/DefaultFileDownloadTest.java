@@ -49,7 +49,7 @@ class DefaultFileDownloadTest {
     @BeforeAll
     public static void setUp() throws IOException {
         fileSystem = Jimfs.newFileSystem();
-        file = File.createTempFile("test", UUID.randomUUID().toString());
+        file = Files.createTempFile("test", UUID.randomUUID().toString()).toFile();
         Files.write(file.toPath(), RandomStringUtils.random(2000).getBytes(StandardCharsets.UTF_8));
     }
 

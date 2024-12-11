@@ -59,7 +59,7 @@ public class S3MultipartClientPutObjectIntegrationTest extends S3IntegrationTest
         byte[] CONTENT =
             RandomStringUtils.randomAscii(OBJ_SIZE).getBytes(Charset.defaultCharset());
 
-        testFile = File.createTempFile("SplittingPublisherTest", UUID.randomUUID().toString());
+        testFile = Files.createTempFile("SplittingPublisherTest", UUID.randomUUID().toString()).toFile();
         Files.write(testFile.toPath(), CONTENT);
         mpuS3Client = S3AsyncClient
             .builder()
