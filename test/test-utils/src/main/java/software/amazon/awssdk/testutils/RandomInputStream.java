@@ -17,6 +17,7 @@ package software.amazon.awssdk.testutils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -26,7 +27,7 @@ import java.util.Random;
 public class RandomInputStream extends InputStream {
 
     /** Shared Random number generator to generate data. */
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
     /** The minimum ASCII code contained in the data in this stream. */
     private static final int MIN_CHAR_CODE = 32;
     /** The maximum ASCII code contained in the data in this stream. */

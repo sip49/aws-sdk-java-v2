@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.services.dynamodb;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -317,7 +318,7 @@ public class DynamoServiceIntegrationTest extends DynamoDBTestBase {
 
         // Load some random data
         System.out.println("Loading data...");
-        Random random = new Random();
+        Random random = new SecureRandom();
         for (int i = 0; i < 50; i++) {
             item = new HashMap<String, AttributeValue>();
             item.put(HASH_KEY_NAME, AttributeValue.builder().s("bar-" + System.currentTimeMillis()).build());

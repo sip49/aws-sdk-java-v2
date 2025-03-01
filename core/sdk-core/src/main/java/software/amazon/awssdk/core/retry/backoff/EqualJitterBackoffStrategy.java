@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.core.retry.backoff;
 
+import java.security.SecureRandom;
 import static software.amazon.awssdk.utils.NumericUtils.min;
 import static software.amazon.awssdk.utils.Validate.isNotNegative;
 
@@ -53,7 +54,7 @@ public final class EqualJitterBackoffStrategy implements BackoffStrategy,
     private final Random random;
 
     private EqualJitterBackoffStrategy(BuilderImpl builder) {
-        this(builder.baseDelay, builder.maxBackoffTime, new Random());
+        this(builder.baseDelay, builder.maxBackoffTime, new SecureRandom());
     }
 
     EqualJitterBackoffStrategy(final Duration baseDelay, final Duration maxBackoffTime, final Random random) {

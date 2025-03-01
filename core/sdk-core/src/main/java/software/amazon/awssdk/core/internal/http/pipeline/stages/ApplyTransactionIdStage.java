@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.core.internal.http.pipeline.stages;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.UUID;
 import software.amazon.awssdk.annotations.SdkInternalApi;
@@ -35,7 +36,7 @@ public class ApplyTransactionIdStage implements MutableRequestToRequestPipeline 
      * clashes but is more performant then using {@link UUID#randomUUID()} which uses SecureRandom
      * internally.
      **/
-    private final Random random = new Random();
+    private final Random random = new SecureRandom();
 
     @Override
     public SdkHttpFullRequest.Builder execute(SdkHttpFullRequest.Builder request, RequestExecutionContext context)

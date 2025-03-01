@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.SecureRandom;
 import java.util.Random;
 import org.apache.commons.io.IOUtils;
 
@@ -32,7 +33,7 @@ public class FileUtils {
     static final int ASCII_HIGH = 126;
     // include a line break character
     static final int modulo = ASCII_HIGH - ASCII_LOW + 2;
-    private static final Random rand = new Random();
+    private static final Random rand = new SecureRandom();
 
     /**
      * Appends the given data to the file specified in the input and returns the
