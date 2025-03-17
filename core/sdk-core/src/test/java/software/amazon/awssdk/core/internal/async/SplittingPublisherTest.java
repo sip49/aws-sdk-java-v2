@@ -61,7 +61,7 @@ public class SplittingPublisherTest {
 
     @BeforeAll
     public static void beforeAll() throws IOException {
-        testFile = File.createTempFile("SplittingPublisherTest", UUID.randomUUID().toString());
+        testFile = Files.createTempFile("SplittingPublisherTest", UUID.randomUUID().toString()).toFile();
         Files.write(testFile.toPath(), CONTENT);
     }
 

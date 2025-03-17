@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.utils;
 
+import java.nio.file.Files;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayInputStream;
@@ -47,7 +48,7 @@ public class Md5UtilsTest {
 
     @Test
     public void testFile() throws Exception {
-        File f = File.createTempFile("Md5UtilsTest-", "txt");
+        File f = Files.createTempFile("Md5UtilsTest-", "txt").toFile();
         f.deleteOnExit();
         FileUtils.writeStringToFile(f, "Testing MD5");
         byte[] md5 = Md5Utils.computeMD5Hash(f);
