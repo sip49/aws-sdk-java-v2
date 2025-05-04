@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.core.interceptor;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -90,13 +91,13 @@ public final class ClasspathInterceptorChainFactory {
                  InputStreamReader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8);
                  BufferedReader fileReader = new BufferedReader(streamReader)) {
 
-                String interceptorClassName = fileReader.readLine();
+                String interceptorClassName = BoundedLineReader.readLine(fileReader, 5_000_000);
                 while (interceptorClassName != null) {
                     ExecutionInterceptor interceptor = createExecutionInterceptor(interceptorClassName);
                     if (interceptor != null) {
                         interceptors.add(interceptor);
                     }
-                    interceptorClassName = fileReader.readLine();
+                    interceptorClassName = BoundedLineReader.readLine(fileReader, 5_000_000);
                 }
             }
 
