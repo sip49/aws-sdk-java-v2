@@ -23,6 +23,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -63,7 +64,7 @@ public abstract class SdkHttpClientTestSuite {
     @Rule
     public WireMockRule mockServer = createWireMockRule();
 
-    private final Random rng = new Random();
+    private final Random rng = new SecureRandom();
 
 
     @Test

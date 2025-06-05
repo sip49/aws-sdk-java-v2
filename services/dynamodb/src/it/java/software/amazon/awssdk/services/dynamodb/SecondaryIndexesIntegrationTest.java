@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.services.dynamodb;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -145,7 +146,7 @@ public class SecondaryIndexesIntegrationTest extends DynamoDBTestBase {
         // so items with the same GSI keys but different primary keys
         // could co-exist in the table.
         int totalDuplicateGSIKeys = 10;
-        Random random = new Random();
+        Random random = new SecureRandom();
         String duplicateGSIHashValue = UUID.randomUUID().toString();
         int duplicateGSIRangeValue = random.nextInt();
         for (int i = 0; i < totalDuplicateGSIKeys; i++) {

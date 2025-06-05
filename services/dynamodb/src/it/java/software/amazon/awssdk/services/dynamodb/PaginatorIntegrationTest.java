@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.services.dynamodb;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
@@ -260,7 +261,7 @@ public class PaginatorIntegrationTest extends DynamoDBTestBase {
 
     private static void putTestData() {
         Map<String, AttributeValue> item = new HashMap();
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         for (int hashKeyValue = 0; hashKeyValue < ITEM_COUNT; hashKeyValue++) {
             item.put(HASH_KEY_NAME, AttributeValue.builder().n(Integer.toString(hashKeyValue)).build());

@@ -22,6 +22,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+import java.security.SecureRandom;
 import static java.util.Collections.emptyMap;
 import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -89,7 +90,7 @@ public class AwsCrtHttpClientSpiVerificationTest {
 
     private byte[] generateRandomBody(int size) {
         byte[] randomData = new byte[size];
-        new Random().nextBytes(randomData);
+        new SecureRandom().nextBytes(randomData);
         return randomData;
     }
 

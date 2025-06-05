@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.http.nio.netty;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.InvocationTargetException;
@@ -31,7 +32,7 @@ import org.junit.jupiter.api.Test;
  * Tests for {@link ProxyConfiguration}.
  */
 public class ProxyConfigurationTest {
-    private static final Random RNG = new Random();
+    private static final Random RNG = new SecureRandom();
     private static final String TEST_HOST = "foo.com";
     private static final int TEST_PORT = 7777;
     private static final String TEST_NON_PROXY_HOST = "bar.com";

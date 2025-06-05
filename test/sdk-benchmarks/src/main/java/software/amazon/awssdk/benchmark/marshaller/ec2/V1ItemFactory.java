@@ -22,6 +22,7 @@ import com.amazonaws.services.ec2.model.ElasticGpuSpecification;
 import com.amazonaws.services.ec2.model.InstanceNetworkInterfaceSpecification;
 import com.amazonaws.services.ec2.model.RunInstancesRequest;
 import com.amazonaws.services.ec2.model.VolumeType;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -30,7 +31,7 @@ import java.util.stream.IntStream;
 final class V1ItemFactory {
     private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
 
-    private static final Random RNG = new Random();
+    private static final Random RNG = new SecureRandom();
 
     RunInstancesRequest tiny() {
         return new RunInstancesRequest()

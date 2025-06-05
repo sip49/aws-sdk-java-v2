@@ -16,6 +16,7 @@
 package software.amazon.awssdk.services.s3.internal.multipart;
 
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Instant;
@@ -55,7 +56,7 @@ import software.amazon.awssdk.utils.Logger;
 class SdkPojoConversionUtilsTest {
     private static final Logger log = Logger.loggerFor(SdkPojoConversionUtils.class);
 
-    private static final Random RNG = new Random();
+    private static final Random RNG = new SecureRandom();
 
     @Test
     void toHeadObject_shouldCopyProperties() {

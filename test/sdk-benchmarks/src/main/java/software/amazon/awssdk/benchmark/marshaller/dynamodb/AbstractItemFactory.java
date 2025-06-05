@@ -17,6 +17,7 @@ package software.amazon.awssdk.benchmark.marshaller.dynamodb;
 
 import com.amazonaws.util.ImmutableMapParameter;
 import java.nio.ByteBuffer;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.Random;
 abstract class AbstractItemFactory<T> {
     private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
 
-    private static final Random RNG = new Random();
+    private static final Random RNG = new SecureRandom();
 
     final Map<String, T> tiny() {
         return ImmutableMapParameter.<String, T>builder()
