@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.services.cloudfront.internal.auth;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -99,7 +100,7 @@ public final class Pem {
         StringBuilder sb = null;
         String line;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 if (readingContent) {
                     if (line.contains(endMarker)) {
                         pemContents.add(new PemObject(beginMarker, Base64.getDecoder().decode(sb.toString())));
