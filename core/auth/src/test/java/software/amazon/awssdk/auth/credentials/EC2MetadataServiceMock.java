@@ -15,6 +15,7 @@
 
 package software.amazon.awssdk.auth.credentials;
 
+import io.github.pixee.security.BoundedLineReader;
 import static software.amazon.awssdk.core.SdkSystemSetting.AWS_EC2_METADATA_SERVICE_ENDPOINT;
 
 import java.io.BufferedReader;
@@ -135,7 +136,7 @@ public class EC2MetadataServiceMock {
                     InputStream inputStream = socket.getInputStream();
 
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                    String requestLine = reader.readLine();
+                    String requestLine = BoundedLineReader.readLine(reader, 5_000_000);
 
                     String[] strings = requestLine.split(" ");
                     String resourcePath = strings[1];
